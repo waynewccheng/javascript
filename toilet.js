@@ -19,7 +19,6 @@ var circle=function(x,y,d){
 
 
 var ad1=5; //1=~29-30 2= 5=5 10=4
-var ad2=6; //1=~29-30 2= 5=5 10=4
 
 var scene1 = function() {
 
@@ -71,9 +70,10 @@ rect(462,193,40,143);
 //fill(0,0,0);
 
 var thingy1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var thingy2=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var thingy2=[-100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
-var update_poopoo = function (thingy,ad) {
+var update_enemy = function (thingy,ad,r,g,b) {
+    fill(r, g, b);
     if(thingy[0]<110){
         ellipse(-10+thingy[0],82+thingy[0],20,20);
         thingy[0]=thingy[0]+ad;
@@ -143,6 +143,11 @@ var update_poopoo = function (thingy,ad) {
             ellipse(485+thingy[13],207-thingy[13],20,20);
             thingy[13]=thingy[13]+ad;
         }
+    else
+        if(thingy[13]>0){
+        var thingy1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var thingy2=[-100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];    
+        }
 };
 
 draw = function() {
@@ -150,22 +155,11 @@ draw = function() {
     var réct=function(){};
 
     scene1();
-    fill(255, 0, 255);
     réct();
     
     
-    //var makeenemyappear=function(secs_apart){
-    //var mills_apart=secs_apart/1000;
-    //if(millis()%mills_apart===0){
-    
-    update_poopoo(thingy1, ad1);
-    update_poopoo(thingy2, ad2);
+    update_enemy(thingy1, 3,255,0,255);
+    update_enemy(thingy2, 3,0,255,255);
 
-    //}    
-    //};
-    //makeenemyappear(2);
-    /**else
-        if(thingy[13]>1){
-            thingy=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        }**/
+
 };  
