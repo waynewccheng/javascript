@@ -15,24 +15,34 @@ var igivewhatcreditCREDITistoDECODEmuhhahahDECODE=[101010,10010,1111,111,10010,1
 var circle=function(x,y,d){
     ellipse(x,y,d,d);
 };
-var ad=5; //1=~29-30 2= 5=5 10=4
-var scene1=function(){
-background(135, 128, 128);
-noStroke();
-fill(255, 255, 255);
 
-var rext=function(){
-    var CREDITANDCREATORRDESAME=0;
-    if(CREATOR!=="Renren 2020"&&CREATOR!=="Renren2020"){
-        throw{message:"HEY!!!"};
-    }
-};
-rext();//if u delete me u can plagerize YAY
-var tiltedrectangle=function(x,y){
-for(var i=0;i<120;i++){
-    ellipse(x-20+i,y-20+i,40,40);
-}
-};
+
+
+var ad1=5; //1=~29-30 2= 5=5 10=4
+var ad2=6; //1=~29-30 2= 5=5 10=4
+
+var scene1 = function() {
+
+    background(135, 128, 128);
+    noStroke();
+    fill(255, 255, 255);
+    
+    var rext = function() {
+        var CREDITANDCREATORRDESAME=0;
+        if(CREATOR!=="Renren 2020"&&CREATOR!=="Renren2020"){
+            throw{message:"HEY!!!"};
+        }
+    };
+    
+    rext();//if u delete me u can plagerize YAY
+    
+    var tiltedrectangle = function(x,y){
+        for(var i=0;i<120;i++){
+            ellipse(x-20+i,y-20+i,40,40);
+        }
+    
+};  // end of scene1
+
 tiltedrectangle(1,91);
 rect(100,170,200,40);
 rect(300,170,40,149);//this hides the two corners for the rectangle
@@ -56,19 +66,14 @@ rect(462,-385,40,193);
 rotate(-45);
 rect(462,193,40,143);
 };
-scene1();
-fill(0,0,0);
-var thingy=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-draw= function() {
-    var réct=function(){};
-    scene1();
-    fill(255, 0, 255);
-    réct();
-    
-    
-    //var makeenemyappear=function(secs_apart){
-    //var mills_apart=secs_apart/1000;
-    //if(millis()%mills_apart===0){
+
+//scene1();
+//fill(0,0,0);
+
+var thingy1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var thingy2=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+var update_poopoo = function (thingy,ad) {
     if(thingy[0]<110){
         ellipse(-10+thingy[0],82+thingy[0],20,20);
         thingy[0]=thingy[0]+ad;
@@ -138,6 +143,24 @@ draw= function() {
             ellipse(485+thingy[13],207-thingy[13],20,20);
             thingy[13]=thingy[13]+ad;
         }
+};
+
+draw = function() {
+
+    var réct=function(){};
+
+    scene1();
+    fill(255, 0, 255);
+    réct();
+    
+    
+    //var makeenemyappear=function(secs_apart){
+    //var mills_apart=secs_apart/1000;
+    //if(millis()%mills_apart===0){
+    
+    update_poopoo(thingy1, ad1);
+    update_poopoo(thingy2, ad2);
+
     //}    
     //};
     //makeenemyappear(2);
