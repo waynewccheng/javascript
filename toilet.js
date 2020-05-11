@@ -26,8 +26,7 @@ var scene1 = function() {
     noStroke();
     fill(255, 255, 255);
     
-    var rext = function() {
-        var CREDITANDCREATORRDESAME=0;
+    var rext = function(){
         if(CREATOR!=="Renren 2020"&&CREATOR!=="Renren2020"){
             throw{message:"HEY!!!"};
         }
@@ -71,83 +70,86 @@ rect(462,193,40,143);
 
 var thingy1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var thingy2=[-100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-var update_enemy = function (thingy,ad,r,g,b) {
+var thingy3=[-200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var circle=function(x,y,d){
+    ellipse(x,y,d,d);
+};
+var flying_circle=function(x,y){
+    rect(x-10,y-10,20,20);
+    
+};
+var update_enemy = function (circle,w,thingy,ad,r,g,b) {
     fill(r, g, b);
     if(thingy[0]<110){
-        ellipse(-10+thingy[0],82+thingy[0],20,20);
+        circle(-10+thingy[0],80+thingy[0],w,w);
         thingy[0]=thingy[0]+ad;
     }
     else
         if(thingy[1]<220){
-            ellipse(100+thingy[1],192,20,20);
+            circle(100+thingy[1],190,w,w);
             thingy[1]=thingy[1]+ad;
     }
     else
         if(thingy[2]<135){
-            ellipse(320,192+thingy[2],20,20);
+            circle(320,190+thingy[2],w,w);
             thingy[2]=thingy[2]+ad;
         }
     else
-        if(thingy[3]<40){
-            ellipse(320-(thingy[3]*(1/1.5)),192+thingy[2]+(thingy[3]),20,20);
+        if(thingy[3]<43){
+            circle(320-(thingy[3]*(1/1.5)),325+(thingy[3]),w,w);
             thingy[3]=thingy[3]+ad;
         }
     else
-        if(thingy[4]<35){
-            ellipse(293.3-thingy[4],367,20,20);
+        if(thingy[4]<37){
+            circle(290-thingy[4],368,w,w);
             thingy[4]=thingy[4]+ad;
         }
     else
-        if(thingy[5]<75){
-            circle(258-(thingy[5]*(1/1.5)),367-thingy[5],20);
+        if(thingy[5]<78){
+            circle(252-(thingy[5]*(1/1.5)),368-thingy[5],w,w);
             thingy[5]=thingy[5]+ad;
         }
     else
-        if(thingy[6]<50){
-            circle(205-thingy[6],292,20);
+        if(thingy[6]<37){
+            circle(197.8-thingy[6],288,w,w);
             thingy[6]=thingy[6]+ad;
         }
     else
         if(thingy[7]<55){
-            circle(155-(thingy[7]*(1/1.5)),292+thingy[7],20);
+            circle(160-(thingy[7]*(1/1.5)),292+thingy[7],w,w);
             thingy[7]=thingy[7]+ad;
         }
     else
-        if(thingy[8]<80){
-            ellipse(118.3-thingy[8],342,20,20);
+        if(thingy[8]<79){
+            circle(111-thingy[8],342,w,w);
             thingy[8]=thingy[8]+ad;
         }
     else
         if(thingy[9]<165){
-            ellipse(41.6,342+thingy[9],20,20);
+            circle(41,342+thingy[9],w,w);
             thingy[9]=thingy[9]+ad;
     }    
     else
         if(thingy[10]<265){
-            ellipse(41.6+thingy[10],507,20,20);
+            circle(41.6+thingy[10],507,w,w);
             thingy[10]=thingy[10]+ad;
         }
     else
         if(thingy[11]<180){
-            ellipse(306.6+thingy[11],507-thingy[11],20,20);
+            circle(306.6+thingy[11],507-thingy[11],w,w);
             thingy[11]=thingy[11]+ad;
         }    
     else
         if(thingy[12]<110){
-            ellipse(486.6,327-thingy[12],20,20);
+            circle(486.6,327-thingy[12],w,w);
             thingy[12]=thingy[12]+ad;
         }
     else
         if(thingy[13]<130){
-            ellipse(485+thingy[13],207-thingy[13],20,20);
-            thingy[13]=thingy[13]+ad;
+            circle(485+thingy[13],207-thingy[13],w,w);
+        thingy[13]=thingy[13]+ad;
         }
-    else
-        if(thingy[13]>0){
-        var thingy1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        var thingy2=[-100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];    
-        }
+
 };
 
 draw = function() {
@@ -158,8 +160,10 @@ draw = function() {
     réct();
     
     
-    update_enemy(thingy1, 3,255,0,255);
-    update_enemy(thingy2, 3,0,255,255);
+    update_enemy(circle,20,thingy1, 2,255,0,255);
+    //update_enemy(What type of enemy,size,which arry,Speed,red,green,blue);
+    update_enemy(circle,20,thingy2, 2,0,255,255);
+    update_enemy(flying_circle,20,thingy3, 2,0,0,255);
 
 
 };  
