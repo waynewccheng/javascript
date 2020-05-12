@@ -78,7 +78,59 @@ var flying_circle=function(x,y){
     rect(x-10,y-10,20,20);
     
 };
-var update_enemy = function (circle,w,thingy,ad,r,g,b) {
+
+var seg_length=[110,220,135,43,37,78,37,55,79,165,265,180,110,130];
+
+var seg_pos = [[-10,80],[100,190],[320,190],[320,325],[290,368],[252,368],[197.8,288],[160,292],[111,342],[41,342],[41.6,507],[306,507],[486.6,327],[485,207]];
+
+var seg_mult = [[1,1],[1,0],[0,1],[-1/1.5,1],[-1,0],[-1/1.5,-1],[-1,0],[-1/1.5,1],[-1,0],[0,1],[1,0],[1,-1],[0,-1],[1,-1]];
+
+
+// current segment -- between 0 and 13
+var seg_n = [0,0,0];         
+
+// location in the current segments
+var seg_loc = [100, 50, 0];
+
+// moving speed
+var speed = [2,3,2.5];
+
+var update_enemy = function (circle,w,id,r,g,b) {
+    
+    fill(r, g, b);
+    
+    var current_seg = seg_n[id];
+    var pos_x = seg_pos[current_seg][0]+seg_mult[current_seg][0]*seg_loc[id];
+    var pos_y = seg_pos[current_seg][1]+seg_mult[current_seg][1]*seg_loc[id];
+    
+    circle(pos_x,pos_y,w,w);
+
+    seg_loc[id] = seg_loc[id] + speed[id];
+    
+    if (seg_loc[id] > seg_length[seg_n[id]]) {
+        seg_n[id]++;
+        if (seg_n[id] > 13) {
+            seg_n[id] = 13;
+            seg_loc[id] = seg_length[seg_n[id]];  
+            speed[id] = -speed[id];
+        } else {
+            seg_loc[id] = 0;
+        }
+    } 
+    
+    if (seg_loc[id] < 0) {
+        seg_n[id]--;
+        if (seg_n[id] < 0) {
+            seg_n[id] = 0;
+            seg_loc[id] = 0;  
+            speed[id] = -speed[id];
+        } else {        
+            seg_loc[id] = seg_length[seg_n[id]];
+        }
+    }
+};
+
+var update_enemy_old = function (circle,w,thingy,ad,r,g,b) {
     fill(r, g, b);
     if(thingy[0]<110){
         circle(-10+thingy[0],80+thingy[0],w,w);
@@ -160,10 +212,9 @@ draw = function() {
     réct();
     
     
-    update_enemy(circle,20,thingy1, 2,255,0,255);
+    update_enemy(circle,20,0,255,0,255);
     //update_enemy(What type of enemy,size,which arry,Speed,red,green,blue);
-    update_enemy(circle,20,thingy2, 2,0,255,255);
-    update_enemy(flying_circle,20,thingy3, 2,0,0,255);
-
+    update_enemy(circle,20,1,0,255,255);
+    update_enemy(flying_circle,20,2,0,0,255);
 
 };  
